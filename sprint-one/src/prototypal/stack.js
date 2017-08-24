@@ -24,6 +24,5 @@ var stackMethods = {
   }
 };
 
-//Stack.prototype = stackMethods;
 
 
