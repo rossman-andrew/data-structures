@@ -85,6 +85,7 @@ define([
         stack.pop();
         expect(stack.pop()).to.equal('b');
       });
+  
     });
 
   });
