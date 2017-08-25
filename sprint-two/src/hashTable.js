@@ -22,19 +22,20 @@ HashTable.prototype.insert = function(k, v) {
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  console.log(this._storage[index][0]);
-  console.log(this._storage[index].length);
+  if (this._storage[index] === undefined) {
+    return undefined;
+  }
   if (this._storage[index].length === 1) {
     return this._storage[index][0][1];
   } else {
-    this._storage[index].forEach(function(keyValPairs) {
-      if (keyValPairs[0] === k) {
-        return keyValPairs[1];
+    for (var i = 0; i < this._storage[index].length; i++) {
+      if (this._storage[index][i][0] === k) {
+        return this._storage[index][i][1];
       }
-    });
+    }
   }
   
-  // return this._storage[index];
+  return this._storage[index][0][1];
 };
 
 HashTable.prototype.remove = function(k) {
@@ -46,6 +47,12 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  
+  Insert = Average case: O(1), constant time. Worst case: O(n), linear time.
+  Retrieve = Average case: O(1), constant time. Worst case: O(n), linear time.
+  Remove = O(1), constant time.
+
  */
+
 
 
