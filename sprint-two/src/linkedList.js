@@ -43,4 +43,10 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ 
+ addToTail - O(1) - Constant time.
+ removeHead - O(1) - Constant time.
+ contains - O(n) - Linear time.
+ 
+ 
  */
