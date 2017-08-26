@@ -36,4 +36,17 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+  
+  it('should return an array containing all the node values in increasing order', function() {
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(14);
+    binarySearchTree.insert(13);
+    expect(binarySearchTree.inOrderValues()).to.eql([1, 3, 4, 5, 6, 7, 8, 10, 13, 14]);
+  });
 });

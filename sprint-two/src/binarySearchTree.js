@@ -60,8 +60,25 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
       travel(currentNode.right);
     }
   };
-  travel(this);    
+  travel(this);
 };
+
+BinarySearchTree.prototype.inOrderValues = function() {
+  var results = [];
+  
+  var traverse = function(node) {
+    if (node === null) {
+      return;
+    } else {
+      traverse(node.left);
+      results.push(node.value);
+      traverse(node.right);
+    }
+  };
+  traverse(this);
+  return results;
+};
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
@@ -69,5 +86,6 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
  Insert - O(log n) - logarithmic time
  Contains - O(log n) - logarithmic time
  depthFirstLog - O(n) - linear time
+ inOrderValues - O(n) - linear time
  
  */
