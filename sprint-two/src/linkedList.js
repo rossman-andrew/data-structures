@@ -66,6 +66,7 @@ var Node = function(value) {
  addToTail - O(1) - Constant time.
  removeHead - O(1) - Constant time.
  contains - O(n) - Linear time.
+ insert - O(n) - Linear time.
  
  
  */
