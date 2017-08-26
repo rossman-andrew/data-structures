@@ -22,7 +22,7 @@ HashTable.prototype.insert = function(k, v) {
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  if (this._storage[index] === undefined) {
+  if (this._storage[index][0] === undefined) {
     return undefined;
   }
   if (this._storage[index].length === 1) {
@@ -34,13 +34,21 @@ HashTable.prototype.retrieve = function(k) {
       }
     }
   }
-  
-  return this._storage[index][0][1];
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  delete this._storage[index];
+  
+  var bucket = this._storage[index];
+  if (bucket.length === 1) {
+    bucket.splice(0, 1);
+  } else {
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === k) {
+        bucket.splice(i, 1);
+      }
+    }
+  }
 };
 
 
@@ -51,6 +59,7 @@ HashTable.prototype.remove = function(k) {
   Insert = Average case: O(1), constant time. Worst case: O(n), linear time.
   Retrieve = Average case: O(1), constant time. Worst case: O(n), linear time.
   Remove = O(1), constant time.
+  
 
  */
 

@@ -46,6 +46,18 @@ describe('hashTable', function() {
     expect(hashTable.retrieve(v2)).to.equal(v2);
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
+  
+  it('should remove only the appropriate key-value pair in a bucket containing multiple key-value pairs', function() {
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; };
+    hashTable.insert('aKey', 'val1');
+    hashTable.insert('bKey', 'val2');
+    hashTable.insert('cKey', 'val3');
+    hashTable.remove('bKey');
+    expect(hashTable.retrieve('bKey')).to.equal(undefined);
+    expect(hashTable.retrieve('cKey')).to.equal('val3');
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
