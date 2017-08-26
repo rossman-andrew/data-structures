@@ -68,4 +68,29 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+  
+  it('should check node for number of edges', function() {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addEdge(1, 2);
+    graph.addEdge(1, 5);
+    graph.addEdge(2, 3);
+    graph.addEdge(2, 5);
+    graph.addEdge(3, 4);
+    graph.addEdge(4, 5);
+    graph.addEdge(4, 6);
+    expect(graph.getEdgeCount(1)).to.equal(2);
+    expect(graph.getEdgeCount(2)).to.equal(3);
+    expect(graph.getEdgeCount(6)).to.equal(1);
+  });  
+  
+  
 });
+
+
+
+

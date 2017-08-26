@@ -65,6 +65,15 @@ Graph.prototype.forEachNode = function(cb) {
   });   
 };
 
+Graph.prototype.getEdgeCount = function(node) {
+  return this.edges.reduce(function(memo, edgeArray) {
+    if (edgeArray[0] === node || edgeArray[1] === node) {
+      memo += 1; 
+    }
+    return memo;
+  }, 0);
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  
@@ -75,6 +84,7 @@ Graph.prototype.forEachNode = function(cb) {
  addEdge - O(1) - Constant time.
  removeEdge - O(n^2) - Quadratic time.
  forEachNode - O(n) - Linear time.
+ getEdgeCount - O(n) - Linear time.
  
  */
 
