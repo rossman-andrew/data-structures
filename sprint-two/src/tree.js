@@ -5,6 +5,7 @@ var Tree = function(value) {
   newTree.childrenNumber = 0;
   newTree.contains = treeMethods.contains;
   newTree.addChild = treeMethods.addChild;
+  newTree.getChildren = treeMethods.getChildren;
   return newTree;
 };
 
@@ -34,11 +35,23 @@ treeMethods.contains = function(target) {
   return searchNode(this);
 };
 
+treeMethods.getChildren = function() {
+  var childrenVals = [];
+  for (var key in this.children) {
+    childrenVals.push(this.children[key].value);
+  }
+  return childrenVals.length === 0 ? null : childrenVals;
+};
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
  
 addChild - O(1) - Constant time.
 contains - O(n) - Linear time.
+getChildren - O(n) - Linear time.
+
+
+
  
  */
