@@ -46,7 +46,6 @@ var LinkedList = function() {
     }
     nodeToAdd.next = travel;
     shadow.next = nodeToAdd;
-    // console.log(this);
   };
 
   return list;
