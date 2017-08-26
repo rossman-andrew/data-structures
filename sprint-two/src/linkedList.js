@@ -21,12 +21,32 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    for (var keyOfNode in list) {
-      if (list[keyOfNode].value === target) {
-        return true;
+    var searchList = function(node) {
+      if (node === null) {
+        return false;
+      } else {
+        if (node.value === target) {
+          return true;
+        } else {
+          return searchList(node.next);
+        }
       }
+    };
+    return searchList(this.head);
+  };
+  
+  list.insert = function(value) {
+    var nodeToAdd = new Node(value);
+    var shadow = null;
+    var travel = this.head;
+    
+    while (nodeToAdd.value > travel.value) {
+      shadow = travel;
+      travel = travel.next;
     }
-    return false;
+    nodeToAdd.next = travel;
+    shadow.next = nodeToAdd;
+    // console.log(this);
   };
 
   return list;

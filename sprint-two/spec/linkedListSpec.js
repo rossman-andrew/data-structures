@@ -52,4 +52,12 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  
+  it('should allow insertion anywhere in the LinkedList', function() {
+    linkedList.addToTail(2);
+    linkedList.addToTail(4);
+    linkedList.addToTail(6);
+    linkedList.insert(5);
+    expect(linkedList.contains(5)).to.equal(true);
+  });
 });
