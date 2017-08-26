@@ -23,5 +23,20 @@ describe('set', function() {
     set.remove('Mel Gibson');
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
+  
+  it('should give overlapping values between 2 Sets in an array', function() {
+    var set2 = Set();
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    set.add(4);
+    set.add(10);
+    set2.add(4);
+    set2.add(5);
+    set2.add(6);
+    set2.add(7);
+    set2.add(10);
+    expect(set.getOverlap(set2)).to.eql([4, 10]);
+  });
 
 });
